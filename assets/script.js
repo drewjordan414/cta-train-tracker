@@ -17,3 +17,9 @@ fetch('https://api.transitchicago.com/api/1.0/cta/' + API_ENDPOINT)
   .catch(error => {
     console.error('Error:', error);
   });
+
+
+
+// Weather API
+
+
