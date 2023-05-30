@@ -17,21 +17,36 @@
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
     crossorigin=""></script>
 </head>
-<header class ="header" style="text-align: center;">
-    <h1>The Boys present..</h1>
-    <h2>Train Tracker</h2>
-</header>
   
 <body>
-    <aside class="cta-box">
-        <p>text box</p>
+    <header>
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+            </div>
+            <div class="navbar-menu">
+                <div class="navbar-start">
+                    <a href="./index.html" class="navbar-item">
+                        Home
+                    </a>
+                    <a href="./map.html" class="navbar-item">
+                        Map
+                    </a>
+                    <a href="./about.html" class="navbar-item">
+                        About
+                    </a>
+                </div>
+            </div>
+            <!-- add in search bar -->
+        </nav>
+    </header>
+
+    <aside class="container">
+        <!-- cards for arrival times and stations -->
     </aside>
     
-    <div class="container" id="map" style="display:flex; width: 1000px; height: 600px; margin-left: 500px; margin-top: 100px;">
+    <div class="container" id="map" style="width: 1000px; height: 600px; margin-top: 100px;">
     </div>
-
     
-    <!-- google transit map -->
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA33nfJr_RnsUSUcdi4RmKvxuqfwdSniuc&callback=initMap"></script>
     <script src = "./assets/script.js"></script>
 </body>
