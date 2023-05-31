@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,11 +9,12 @@
     <!-- bulma link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    
+
+
     <!-- custom css -->
     <link rel="stylesheet" href="./assets/style.css">
 </head>
+
 <body>
     <header>
         <nav class="navbar" role="navigation" aria-label="main navigation">
@@ -30,10 +32,10 @@
                         About
                     </a>
                 </div>
-                <div class="navbar">
+                <div class="navbar-end">
                     <div class="navbar-item">
                         <div class="field has-addons">
-                            <div class="control" style="justify-content: center;">
+                            <div class="control">
                                 <input class="input" type="text" placeholder="Search CTA Stations">
                             </div>
                             <div class="control">
@@ -50,8 +52,8 @@
     <main>
         <div class="columns">
             <!-- <div class="hero-body" id="map" style="width: 200%; height: 100%; margin-top: 100px; position: absolute; top: 0; left: 0;"></div> -->
-             <div class="column is-one-third" style="margin-top: 100px; ">
-                 <div class="field has-addons">
+            <div class="column is-one-third" style="margin-top: 100px; ">
+                <div class="field has-addons">
                     <div class="control">
                         <input class="input" type="text" placeholder="Search CTA Stations">
                     </div>
@@ -61,20 +63,33 @@
                 </div>
             </div>
             <div class="column is-two-thirds">
-                <div class="container">
-                     <!-- cards for arrival times and stations
-                     for red line  -->
-                </div>
-                
                 <div class="container" id="map" style="width: 600px; height: 600px; margin-top: 200px;"></div>
+                <script>
+                    function initMap() {
+                        const map = new google.maps.Map(document.getElementById("map"), {
+                            zoom: 13,
+                            center: { lat: 41.8781, lng: -87.6298 }, // Center the map to Chicago
+                        });
+
+                        const transitLayer = new google.maps.TransitLayer();
+                        transitLayer.setMap(map);
+
+                        fetchTrainData(map);
+                        setInterval(() => fetchTrainData(map), 15000);
+                    }
+
+                    window.initMap = initMap;
+                </script>
             </div>
         </div>
-        
-    </main>    
-    
+
+    </main>
+
     <!-- Google Maps API script -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA33nfJr_RnsUSUcdi4RmKvxuqfwdSniuc&callback=initMap" async defer></script>
-    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA33nfJr_RnsUSUcdi4RmKvxuqfwdSniuc&callback=initMap"
+        async defer></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <!-- Your JavaScript file -->
     <script src="./assets/script.js"></script>
     <!-- <script src="./server-side/server.js"></script> -->
@@ -82,11 +97,12 @@
 
 <footer class="footer">
     <div class="content has-text-centered">
-      <p>
-        <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
-        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
-      </p>
+        <p>
+            <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+        </p>
     </div>
-  </footer>
+</footer> -->
+
 </html>
