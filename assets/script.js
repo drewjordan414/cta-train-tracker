@@ -50,7 +50,7 @@ const trainColors = {
 
 // Fetch train data from CTA API and update map
 function fetchTrainData(map) {
-  const trainDataUrl = `https://lapi.transitchicago.com/api/1.0/ttpositions.aspx?key=${ctaKey}&rt=red,blue,brn,g,org,p,pink,y&outputType=JSON`;
+  const trainDataUrl = "https://lapi.transitchicago.com/api/1.0/ttpositions.aspx?key=${ctaKey}&rt=red,blue,brn,g,org,p,pink,y&outputType=JSON";
 
   axios
     .get(trainDataUrl)
