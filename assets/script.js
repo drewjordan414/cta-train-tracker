@@ -52,9 +52,10 @@ let trainMarkers = [];
 
 // Fetch train data from CTA API and update map
 function fetchTrainData(map) {
-  const trainDataUrl = `https://cors-anywhere.herokuapp.com/https://lapi.transitchicago.com/api/1.0/ttpositions.aspx?key=${ctaKey}&rt=red,blue,brn,g,org,p,pink,y&outputType=JSON`;
+  const trainDataUrl = `https://lapi.transitchicago.com/api/1.0/ttpositions.aspx?key=${ctaKey}&rt=red,blue,brn,g,org,p,pink,y&outputType=JSON`;
+  const proxyUrl = "https://cors-anywhere.herokuapp.com/";
 
-  fetch(trainDataUrl)
+  fetch(proxyUrl + trainDataUrl)
     .then((response) => response.json())
     .then((data) => {
       // Clear existing train markers from the map
@@ -70,7 +71,7 @@ function fetchTrainData(map) {
             },
             icon: {
               path: google.maps.SymbolPath.CIRCLE,
-              fillColor: trainColors[route.rt],
+              fillColor: trainColors[route.rt], // Set the marker color based on the train line
               fillOpacity: 1,
               strokeWeight: 0,
               scale: 6,
@@ -120,9 +121,6 @@ function getTrainArrivalTime(destination, stopDescription) {
 
   return "N/A";
 }
-
-
-
 
 // Initialize the map and fetch train data
 // function initMap() {
