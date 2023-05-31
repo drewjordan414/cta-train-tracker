@@ -19,8 +19,10 @@
     <header>
         <nav class="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
+                <img src="./assets/images/CTAlogo.png">
             </div>
             <div class="navbar-menu">
+                
                 <div class="navbar-start">
                     <a href="https://drewjordan414.github.io/cta-train-tracker/" class="navbar-item">
                         Home
@@ -52,8 +54,8 @@
     <main>
         <div class="columns">
             <!-- <div class="hero-body" id="map" style="width: 200%; height: 100%; margin-top: 100px; position: absolute; top: 0; left: 0;"></div> -->
-            <div class="column is-one-third" style="margin-top: 100px; ">
-                <div class="field has-addons">
+             <div class="column is-one-third" style="margin-top: 100px; ">
+                 <div class="field has-addons">
                     <div class="control">
                         <input class="input" type="text" placeholder="Search CTA Stations">
                     </div>
@@ -64,32 +66,31 @@
             </div>
             <div class="column is-two-thirds">
                 <div class="container" id="map" style="width: 600px; height: 600px; margin-top: 200px;"></div>
-                <script>
-                    function initMap() {
-                        const map = new google.maps.Map(document.getElementById("map"), {
-                            zoom: 13,
-                            center: { lat: 41.8781, lng: -87.6298 }, // Center the map to Chicago
-                        });
-
-                        const transitLayer = new google.maps.TransitLayer();
-                        transitLayer.setMap(map);
-
-                        fetchTrainData(map);
-                        setInterval(() => fetchTrainData(map), 15000);
-                    }
-
-                    window.initMap = initMap;
-                </script>
+                <script>function initMap() {
+                    const map = new google.maps.Map(document.getElementById("map"), {
+                        zoom: 13,
+                        center: { lat: 41.8781, lng: -87.6298 }, // Center the map to Chicago
+                    });
+                  
+                    const transitLayer = new google.maps.TransitLayer();
+                    transitLayer.setMap(map);
+                  
+                    fetchTrainData(map);
+                    setInterval(() => fetchTrainData(map), 15000);
+                  }
+                  
+                  window.initMap = initMap;</script>
             </div>
         </div>
-
-    </main>
-
+        
+    </main>    
+    
     <!-- Google Maps API script -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA33nfJr_RnsUSUcdi4RmKvxuqfwdSniuc&callback=initMap"
-        async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA33nfJr_RnsUSUcdi4RmKvxuqfwdSniuc&callback=initMap" async defer></script>
     <script src="https://code.jquery.com/jquery-3.7.0.js"
-        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <!-- Your JavaScript file -->
     <script src="./assets/script.js"></script>
     <!-- <script src="./server-side/server.js"></script> -->
@@ -103,6 +104,5 @@
             is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
         </p>
     </div>
-</footer> -->
-
+  </footer>
 </html>
