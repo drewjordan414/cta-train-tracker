@@ -49,8 +49,9 @@
 
     <main>
         <div class="columns">
-            <!-- <div class="hero-body" id="map" style="width: 200%; height: 100%; margin-top: 100px; position: absolute; top: 0; left: 0;"></div> -->
-             <div class="column is-one-third" style="margin-top: 100px; ">
+            <!-- if we want to make the map full page size, use below
+            <div class="hero-body" id="map" style="width: 200%; height: 100%; margin-top: 100px; position: absolute; top: 0; left: 0;"></div> -->
+              <div class="box" style="margin-top: 100px; ">
                  <div class="field has-addons">
                     <div class="control">
                         <input class="input" type="text" placeholder="Search CTA Stations">
@@ -60,12 +61,14 @@
                     </div>
                 </div>
             </div>
-            <div class="column is-two-thirds">
+            <div class="box" style="width: 62%;">
                 <div class="container">
-                     <!-- cards for arrival times and stations
-                     for red line  -->
-                </div>
-                
+                    <!-- cards for arrival times and stations
+                    for red line  -->
+               </div>
+            </div>
+            <div class="box">
+                 <!-- if we want to use a small box, use -->
                 <div class="container" id="map" style="width: 600px; height: 600px; margin-top: 200px;"></div>
             </div>
         </div>
