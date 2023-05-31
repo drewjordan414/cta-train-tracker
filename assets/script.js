@@ -48,16 +48,17 @@ const trainColors = {
   y: "#F9E300",
 };
 
+let trainMarkers = [];
+
 // Fetch train data from CTA API and update map
 function fetchTrainData(map) {
   const trainDataUrl = `https://cors-anywhere.herokuapp.com/https://lapi.transitchicago.com/api/1.0/ttpositions.aspx?key=${ctaKey}&rt=red,blue,brn,g,org,p,pink,y&outputType=JSON`;
-// console.log(trainDataUrl);
+
   fetch(trainDataUrl)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data)
       // Clear existing train markers from the map
-      clearTrainMarkers(map);
+      clearTrainMarkers();
 
       // Parse train data and create new markers
       data.ctatt.route.forEach((route) => {
@@ -76,20 +77,26 @@ function fetchTrainData(map) {
             },
             map: map,
           });
+
+          // Add marker to the array
+          trainMarkers.push(marker);
         });
       });
     })
     .catch((error) => {
       console.error("Error fetching train data:", error);
     });
-};
+}
 
 // Clear train markers from the map
-function clearTrainMarkers(map) {
-  map.data.forEach((marker) => {
-      marker.setMap(null);
+function clearTrainMarkers() {
+  // Loop through the train markers array and set the map property to null
+  trainMarkers.forEach((marker) => {
+    marker.setMap(null);
   });
-  map.data.clear();
+
+  // Clear the train markers array
+  trainMarkers = [];
 }
 
 
@@ -127,7 +134,7 @@ function initMap() {
   transitLayer.setMap(map);
 
   fetchTrainData(map);
-  setInterval(() => fetchTrainData(map), 30000);
+  setInterval(() => fetchTrainData(map), 15000);
 }
 
 window.initMap = initMap;
