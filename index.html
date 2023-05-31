@@ -7,17 +7,9 @@
     <title>Train Tracker</title>
     <!-- bulma link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
-    <!-- map-box cdn -->
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css' rel='stylesheet' />
-    <!-- other cdns -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-    crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-    crossorigin=""></script>
+    <!-- custom css -->
+    <link rel="stylesheet" href="./assets/style.css">
 </head>
-  
 <body>
     <header>
         <nav class="navbar" role="navigation" aria-label="main navigation">
@@ -35,19 +27,84 @@
                         About
                     </a>
                 </div>
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div class="field has-addons">
+                            <div class="control">
+                                <input class="input" type="text" placeholder="Search CTA Stations">
+                            </div>
+                            <div class="control">
+                                <button class="button is-success" style="margin-left: 20px;">Search</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- add in search bar -->
         </nav>
     </header>
 
-    <aside class="container">
-        <!-- cards for arrival times and stations -->
-    </aside>
+
+    <main>
+        <div class="columns">
+            <div class="column is-one-third" style="margin-top: 100px;">Train Data
+                <div class="card">
+                    <div class="card-content">
+                      <div class="content">
+                        Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-content">
+                      <div class="content">
+                        Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-content">
+                      <div class="content">
+                        Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-content">
+                      <div class="content">
+                        Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum.
+                      </div>
+                    </div>
+                  </div>
+            
+            
+            </div>
+            <div class="column is-two-thirds">
+                <div class="container">
+                    <!-- cards for arrival times and stations -->
+                    <!-- for red line -->
+                </div>
+                
+                <div class="container" id="map" style="width: 1000px; height: 600px; margin-top: 100px;"></div>
+            </div>
+        </div>
+        
+    </main>
     
-    <div class="container" id="map" style="width: 1000px; height: 600px; margin-top: 100px;">
-    </div>
     
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA33nfJr_RnsUSUcdi4RmKvxuqfwdSniuc&callback=initMap"></script>
-    <script src = "./assets/script.js"></script>
+    <!-- Google Maps API script -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA33nfJr_RnsUSUcdi4RmKvxuqfwdSniuc&callback=initMap" async defer></script>
+    <!-- Your JavaScript file -->
+    <script src="./assets/script.js"></script>
+    <script src="./server-side/server.js"></script>
 </body>
+
+<footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+      </p>
+    </div>
+  </footer>
 </html>

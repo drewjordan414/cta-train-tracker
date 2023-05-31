@@ -3,12 +3,16 @@
     display: flex;
     background-color: #00d1b2;
     color: aliceblue;
-    height: 150px;
+    height: 100px;
 }
 
-#map{
+footer{
+    margin-top: 200px;
+}
+
+/* #map{
     display: flex;
     align-content: center;
     height: 600px;
     width: 1000px;
-}
+} */
