@@ -89,6 +89,7 @@ function fetchTrainData(map) {
     });
 }
 
+
 // Clear train markers from the map
 function clearTrainMarkers() {
   // Loop through the train markers array and set the map property to null
