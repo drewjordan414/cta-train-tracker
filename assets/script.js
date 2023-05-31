@@ -2,7 +2,7 @@
 const ctaKey = "5e45022e107345de8ab3edb8a97f9b94";
 const googleMapKey =  "AIzaSyA33nfJr_RnsUSUcdi4RmKvxuqfwdSniuc";
 // const mapBox = "pk.eyJ1IjoiZHJld2pvcmRhbjQwNCIsImEiOiJjbGlhbnF6bjQwMG1jM2ZuMjRpcHBoeHRyIn0.s6T-06OAwld32_Y9wTKsog";
-const trainDriection = {
+const trainDirection = {
     "red":{
         1: "Howard-Bound",
         5: "95th/Dan Ryan-Bound"
@@ -91,6 +91,30 @@ function clearTrainMarkers(map) {
   });
   map.data.clear();
 }
+
+
+// Get train arrival time based on station and stop description
+function getTrainArrivalTime(destination, stopDescription) {
+  const trainDirection = Object.entries(trainDirection).find(
+    ([_, value]) => value[1] === destination
+  );
+
+  if (trainDirection) {
+    const route = trainDirection[0];
+    const direction = trainDirection[1][stopDescription];
+    if (route && direction) {
+      // Replace this with your logic to get the actual arrival time
+      // This is just a placeholder
+      const arrivalTime = "12:30 PM";
+      return arrivalTime;
+    }
+  }
+
+  return "N/A";
+}
+
+
+
 
 // Initialize the map and fetch train data
 function initMap() {
