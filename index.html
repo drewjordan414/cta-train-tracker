@@ -18,9 +18,6 @@
 <body>
     <header>
         <nav class="navbar" role="navigation" aria-label="main navigation">
-            </div>
-             <div class="navbar-menu">
-                <div class="navbar-start">
                     <a href="https://drewjordan414.github.io/cta-train-tracker/" class="navbar-item">
                         Home
                     </a>
@@ -28,7 +25,7 @@
                         About
                     </a>
                 </div>
-                <div class="navbar">
+                <div class="navbar-end">
                     <div class="navbar-item">
                         <div class="field has-addons">
                             <div class="control">
@@ -45,105 +42,105 @@
     </header>
 
 
-    <main class="box">
+    <main has-background-grey; class="box">
         <div class="columns">
-            <!-- <div class="hero-body" id="map" style="width: 200%; height: 100%; margin-top: 100px; position: absolute; top: 0; left: 0;"></div> -->
-            <div class="column is-one-fifth" style="margin-top: 100px; ">
+            <div class="hero-body" id="map" style="width: 200%; height: 100%; margin-top: 100px; position: absolute; top: 0; left: 0; z-index: 1;"></div>
+            <div class="column is-1" style="margin-top: 100px; z-index: 2; justify-content: center; align-items: center; background-color: #333; color: white;">
     <div class="mainbar">
-        <div class="box">
+        <div class="">
             <h3>Show me the&hellip;</h3>
             <ul>
                 <li>
-                    <div class="box">
+                    <div class="is-size-4 has-text-danger-dark">
                         <input type="hidden" name="RedLineData" />
                         <input type="checkbox" name="RedLineRoute" />
-                        <label for="Red_Line">
+                        <label for="Red_Line" style="display: inline-block;">
                             <div></div>
-                            <div style="display: inline-block;">
+                            <div>
                                 Red Line
                             </div>
                         </label>
                     </div>
                 </li>
                 <li>
-                    <div class="box">
+                    <div class="is-size-4 has-text-link">
                         <input type="hidden" name="BlueLineData" />
                         <input type="checkbox" name="BlueLineRoute" />
-                        <label for="Blue_Line">
+                        <label for="Blue_Line" style="display: inline-block;">
                             <div></div>
-                            <div style="display: inline-block;">
+                            <div>
                                 Blue Line
                             </div>
                         </label>
                     </div>
                 </li>
                 <li>
-                    <div class="box">
+                    <div class="is-size-4 has-text-warning-dark">
                         <input type="hidden" name="BrownLineData" />
                         <input type="checkbox" name="BrownLineRoute" />
-                        <label for="Brown_Line">
+                        <label for="Brown_Line" style="display: inline-block;">
                             <div></div>
-                            <div style="display: inline-block;">
+                            <div>
                                 Brown Line
                             </div>
                         </label>
                     </div>
                 </li>
                 <li>
-                    <div class="box">
+                    <div class="is-size-4 has-text-success">
                         <input type="hidden" name="GreenLineData" />
                         <input type="checkbox" name="GreenLineRoute" />
-                        <label for="Green_Line">
+                        <label for="Green_Line" style="display: inline-block;">
                             <div></div>
-                            <div style="display: inline-block;">
+                            <div>
                                 Green Line
                             </div>
                         </label>
                     </div>
                 </li>
                 <li>
-                    <div class="box">
+                    <div class="is-size-4" style="color: orange;">
                         <input type="hidden" name="OrangeLineData" />
                         <input type="checkbox" name="OrangeLineRoute" />
-                        <label for="Orange_Line">
+                        <label for="Orange_Line" style="display: inline-block;">
                             <div></div>
-                            <div style="display: inline-block;">
+                            <div>
                                 Orange Line
                             </div>
                         </label>
                     </div>
                 </li>
                 <li>
-                    <div class="box">
+                    <div class="is-size-4 has-text-danger">
                         <input type="hidden" name="PinkLineData" />
                         <input type="checkbox" name="PinkLineRoute" />
-                        <label for="Pink_Line">
+                        <label for="Pink_Line" style="display: inline-block;">
                             <div></div>
-                            <div style="display: inline-block;">
+                            <div>
                                 Pink Line
                             </div>
                         </label>
                     </div>
                 </li>
                 <li>
-                    <div class="box">
+                    <div class="is-size-4" style="color: purple;">
                         <input type="hidden" name="PurpleLineData" />
                         <input type="checkbox" name="PurpleLineRoute"/>
-                        <label for="Purple_Line">
+                        <label for="Purple_Line" style="display: inline-block;">
                             <div></div>
-                            <div style="display: inline-block;">
+                            <div>
                                 Purple Line
                             </div>
                         </label>
                     </div>
                 </li>
                 <li>
-                    <div class="box">
+                    <div class="is-size-4 has-text-warning">
                         <input type="hidden" name="YellowLineData" />
                         <input type="checkbox" name="YellowLineRoute" />
-                        <label for="Yellow_Line">
+                        <label for="Yellow_Line" style="display: inline-block;">
                             <div></div>
-                            <div style="display: inline-block;">
+                            <div>
                                 Yellow Line
                             </div>
                         </label>
@@ -153,7 +150,7 @@
         </div>
     </div>
 </div>
-            <div class="column is-four-fifths">
+            <div class="column">
                 <div class="container" id="map" style="width: 100%; height: 80vh; margin-top: 0px;"></div>
                 <script>
                     function initMap() {
@@ -166,7 +163,7 @@
                         transitLayer.setMap(map);
 
                         fetchTrainData(map);
-                        setInterval(() => fetchTrainData(map), 15000);
+                        setInterval(() => fetchTrainData(map), 1500000);
                     }
 
                     window.initMap = initMap;
