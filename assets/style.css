@@ -11,6 +11,25 @@ footer{
     margin-top: 200px;
 }
 
+@media (max-width: 1024px) {
+
+    .navbar-item {
+        align-items: center;
+    }
+    .navbar-menu {
+      flex-direction: column;
+    }
+    .navbar-start,
+    .navbar-end {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      
+    }
+    .navbar-item {
+      margin-bottom: 0;
+    }
+  }
 /* #map{
     display: flex;
     align-content: center;
