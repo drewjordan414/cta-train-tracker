@@ -30,7 +30,7 @@
                     <div class="navbar-item">
                         <div class="field has-addons">
                             <div class="control">
-                                <input class="input" type="text" placeholder="Search CTA Stations">
+                                <input class="input" id="SearchBar" type="text" placeholder="Search CTA Stations">
                             </div>
                             <div class="control">
                                 <button class="button is-success" style="margin-left: 20px;">Search</button>
@@ -164,7 +164,7 @@
                         transitLayer.setMap(map);
 
                         fetchTrainData(map);
-                        setInterval(() => fetchTrainData(map), 1500000);
+                        setInterval(() => fetchTrainData(map), 15000);
                     }
 
                     window.initMap = initMap;

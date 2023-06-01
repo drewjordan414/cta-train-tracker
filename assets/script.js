@@ -50,6 +50,23 @@ const trainColors = {
 
 let trainMarkers = [];
 
+// Local Storage for Search History //
+
+const searchInput = document.getElementById('SearchBar');
+
+window.addEventListener('load', function() {
+  const savedSearchText = localStorage.getItem('searchText');
+  if (savedSearchText) {
+    searchInput.value = savedSearchText;
+  }
+});
+
+searchInput.addEventListener('input', function() {
+  const searchText = searchInput.value;
+  localStorage.setItem('searchText', searchText);
+});
+
+
 // Fetch train data from CTA API and update map
 function fetchTrainData(map) {
   const trainDataUrl = `https://lapi.transitchicago.com/api/1.0/ttpositions.aspx?key=${ctaKey}&rt=red,blue,brn,g,org,p,pink,y&outputType=JSON`;
