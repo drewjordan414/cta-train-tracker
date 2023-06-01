@@ -18,16 +18,10 @@
 <body>
     <header>
         <nav class="navbar" role="navigation" aria-label="main navigation">
-            <div class="navbar-brand">
             </div>
-            <div class="navbar-menu">
-                <div class="navbar-start">
                     <a href="https://drewjordan414.github.io/cta-train-tracker/" class="navbar-item">
                         Home
                     </a>
-                    <!-- <a href="./map.html" class="navbar-item">
-                        Map
-                    </a> -->
                     <a href="./about.html" class="navbar-item">
                         About
                     </a>
@@ -51,14 +45,14 @@
 
     <main has-background-grey; class="box">
         <div class="columns">
-            <!-- <div class="hero-body" id="map" style="width: 200%; height: 100%; margin-top: 100px; position: absolute; top: 0; left: 0;"></div> -->
-            <div class="column is-one-fifth" style="margin-top: 100px; ">
+            <div class="hero-body" id="map" style="width: 200%; height: 100%; margin-top: 100px; position: absolute; top: 0; left: 0; z-index: 1;"></div>
+            <div class="column is-1" style="margin-top: 100px; z-index: 2; justify-content: center; align-items: center; background-color: #333; color: white;">
     <div class="mainbar">
-        <div class="box">
+        <div class="">
             <h3>Show me the&hellip;</h3>
             <ul>
                 <li>
-                    <div class="box">
+                    <div class="">
                         <input type="hidden" name="RedLineData" />
                         <input type="checkbox" name="RedLineRoute" />
                         <label for="Red_Line">
@@ -70,7 +64,7 @@
                     </div>
                 </li>
                 <li>
-                    <div class="box">
+                    <div class="">
                         <input type="hidden" name="BlueLineData" />
                         <input type="checkbox" name="BlueLineRoute" />
                         <label for="Blue_Line">
@@ -82,7 +76,7 @@
                     </div>
                 </li>
                 <li>
-                    <div class="box">
+                    <div class="">
                         <input type="hidden" name="BrownLineData" />
                         <input type="checkbox" name="BrownLineRoute" />
                         <label for="Brown_Line">
@@ -94,7 +88,7 @@
                     </div>
                 </li>
                 <li>
-                    <div class="box">
+                    <div class="">
                         <input type="hidden" name="GreenLineData" />
                         <input type="checkbox" name="GreenLineRoute" />
                         <label for="Green_Line">
@@ -106,7 +100,7 @@
                     </div>
                 </li>
                 <li>
-                    <div class="box">
+                    <div class="">
                         <input type="hidden" name="OrangeLineData" />
                         <input type="checkbox" name="OrangeLineRoute" />
                         <label for="Orange_Line">
@@ -118,7 +112,7 @@
                     </div>
                 </li>
                 <li>
-                    <div class="box">
+                    <div class="">
                         <input type="hidden" name="PinkLineData" />
                         <input type="checkbox" name="PinkLineRoute" />
                         <label for="Pink_Line">
@@ -130,19 +124,19 @@
                     </div>
                 </li>
                 <li>
-                    <div class="box">
+                    <div class="">
                         <input type="hidden" name="PurpleLineData" />
                         <input type="checkbox" name="PurpleLineRoute"/>
                         <label for="Purple_Line">
                             <div></div>
-                            <div style="display: inline-block;">
+                            <div style="display: block">
                                 Purple Line
                             </div>
                         </label>
                     </div>
                 </li>
                 <li>
-                    <div class="box">
+                    <div class="">
                         <input type="hidden" name="YellowLineData" />
                         <input type="checkbox" name="YellowLineRoute" />
                         <label for="Yellow_Line">
@@ -157,7 +151,7 @@
         </div>
     </div>
 </div>
-            <div class="column is-four-fifths">
+            <div class="column">
                 <div class="container" id="map" style="width: 100%; height: 80vh; margin-top: 0px;"></div>
                 <script>
                     function initMap() {
@@ -170,7 +164,7 @@
                         transitLayer.setMap(map);
 
                         fetchTrainData(map);
-                        setInterval(() => fetchTrainData(map), 15000);
+                        setInterval(() => fetchTrainData(map), 1500000);
                     }
 
                     window.initMap = initMap;
