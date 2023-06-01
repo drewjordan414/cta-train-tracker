@@ -17,3 +17,9 @@ footer{
     height: 600px;
     width: 1000px;
 } */
+
+@media screen and (min-width: 1024px) {
+    .navbar-menu {
+        display: flex;
+    }
+}
