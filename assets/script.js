@@ -1,66 +1,66 @@
 // Housekeeping
 const ctaKey = "5e45022e107345de8ab3edb8a97f9b94";
-const googleMapKey =  "AIzaSyD3RG2QsU0mu1zklWXto3wL2QUaIF6WHbM";
+const googleMapKey = "AIzaSyD3RG2QsU0mu1zklWXto3wL2QUaIF6WHbM";
 // const mapBox = "pk.eyJ1IjoiZHJld2pvcmRhbjQwNCIsImEiOiJjbGlhbnF6bjQwMG1jM2ZuMjRpcHBoeHRyIn0.s6T-06OAwld32_Y9wTKsog";
 // Add event listeners to line buttons
-document.getElementById("redButton").addEventListener("click", function() {
+document.getElementById("redButton").addEventListener("click", function () {
   fetchTrainData(map, "red");
 });
-document.getElementById("blueButton").addEventListener("click", function() {
+document.getElementById("blueButton").addEventListener("click", function () {
   fetchTrainData(map, "blue");
 });
-document.getElementById("brownButton").addEventListener("click", function() {
+document.getElementById("brownButton").addEventListener("click", function () {
   fetchTrainData(map, "brn");
 });
-document.getElementById("greenButton").addEventListener("click", function() {
+document.getElementById("greenButton").addEventListener("click", function () {
   fetchTrainData(map, "g");
 });
-document.getElementById("orangeButton").addEventListener("click", function() {
+document.getElementById("orangeButton").addEventListener("click", function () {
   fetchTrainData(map, "org");
 });
-document.getElementById("pinkButton").addEventListener("click", function() {
+document.getElementById("pinkButton").addEventListener("click", function () {
   fetchTrainData(map, "pink");
 });
-document.getElementById("purpleButton").addEventListener("click", function() {
+document.getElementById("purpleButton").addEventListener("click", function () {
   fetchTrainData(map, "p");
 });
-document.getElementById("yellowButton").addEventListener("click", function() {
+document.getElementById("yellowButton").addEventListener("click", function () {
   fetchTrainData(map, "y");
 });
 
 const trainDirection = {
-    "red":{
-        1: "Howard-Bound",
-        5: "95th/Dan Ryan-Bound"
-    },
-    "blue":{
-        1: "O'Hare-Bound",
-        5: "Forest Park-Bound"
-    },
-    "brn":{
-        1: "Kimball-Bound",
-        5: "Loop-Bound"
-    },
-    "g":{
-        1: "Harlem/Lake-Bound",
-        5: "Cottage Grove-Bound"
-    },
-    "org":{
-        1: "Loop-Bound",
-        5: "Midway-Bound"
-    },
-    "p":{
-        1: "Linden-Bound",
-        5: "Loop-Bound"
-    },
-    "pink":{
-        1: "54th/Cermak-Bound",
-        5: "Loop-Bound"
-    },
-    "y":{
-        1: "Skokie-Bound",
-        5: "Howard-Bound"
-    },
+  "red": {
+    1: "Howard-Bound",
+    5: "95th/Dan Ryan-Bound"
+  },
+  "blue": {
+    1: "O'Hare-Bound",
+    5: "Forest Park-Bound"
+  },
+  "brn": {
+    1: "Kimball-Bound",
+    5: "Loop-Bound"
+  },
+  "g": {
+    1: "Harlem/Lake-Bound",
+    5: "Cottage Grove-Bound"
+  },
+  "org": {
+    1: "Loop-Bound",
+    5: "Midway-Bound"
+  },
+  "p": {
+    1: "Linden-Bound",
+    5: "Loop-Bound"
+  },
+  "pink": {
+    1: "54th/Cermak-Bound",
+    5: "Loop-Bound"
+  },
+  "y": {
+    1: "Skokie-Bound",
+    5: "Howard-Bound"
+  },
 }
 
 // const directionAngle = {
@@ -95,14 +95,14 @@ let trainMarkers = [];
 
 const searchInput = document.getElementById('SearchBar');
 
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
   const savedSearchText = localStorage.getItem('searchText');
   if (savedSearchText) {
     searchInput.value = savedSearchText;
   }
 });
 
-searchInput.addEventListener('input', function() {
+searchInput.addEventListener('input', function () {
   const searchText = searchInput.value;
   localStorage.setItem('searchText', searchText);
 });
@@ -213,450 +213,450 @@ window.initMap = initMap;
 
 function redLine(google, map) {
 
-var directionsDisplay;
-var directionsService = new google.maps.DirectionsService();
-var map;
+  var directionsDisplay;
+  var directionsService = new google.maps.DirectionsService();
+  var map;
 
-function initialize() {
+  function initialize() {
 
-  var rendererOptions = {
-    map: map,
-    suppressMarkers: false,
-    polylineOptions: {
-      strokeColor: 'null'
-    }
-  };
+    var rendererOptions = {
+      map: map,
+      suppressMarkers: false,
+      polylineOptions: {
+        strokeColor: 'null'
+      }
+    };
 
-  directionsDisplay = new google.maps.DirectionsRenderer
-  (rendererOptions);
+    directionsDisplay = new google.maps.DirectionsRenderer
+      (rendererOptions);
 
-  directionsDisplay.setMap(map);
+    directionsDisplay.setMap(map);
 
-  var start = "Red Line, Howard Station, 1649 W Howard St, Chicago, IL 60626";
-  var end = "Red Line, 95th/Dan Ryan Station, 15 W 95th St, Chicago, IL 60628";
-  var method = 'TRANSIT';
-  var request = {
-    origin: start,
-    destination: end,
-    travelMode: google.maps.DirectionsTravelMode[method]
-  };
-  
-  directionsService.route(request, function(response, status) {
-    if (status == google.maps.DirectionsStatus.OK) {
-      directionsDisplay.setDirections(response);
-    }
-  });
+    var start = "Red Line, Howard Station, 1649 W Howard St, Chicago, IL 60626";
+    var end = "Red Line, 95th/Dan Ryan Station, 15 W 95th St, Chicago, IL 60628";
+    var method = 'TRANSIT';
+    var request = {
+      origin: start,
+      destination: end,
+      travelMode: google.maps.DirectionsTravelMode[method]
+    };
 
-  // Add an event listener to the button
-  var button = document.getElementById("redButton");
-  button.addEventListener("click", changePolylineColor);
-}
+    directionsService.route(request, function (response, status) {
+      if (status == google.maps.DirectionsStatus.OK) {
+        directionsDisplay.setDirections(response);
+      }
+    });
 
-function changePolylineColor() {
-  directionsDisplay.setMap(null);
-  directionsDisplay.setOptions({
-    polylineOptions: {
-      strokeColor: 'red',
-      strokeWeight: '8',
-      strokeOpacity: '.75',
-      zIndex: -5
-    }
-  });
-  directionsDisplay.setMap(map);
-}
-initialize();
+    // Add an event listener to the button
+    var button = document.getElementById("redButton");
+    button.addEventListener("click", changePolylineColor);
+  }
+
+  function changePolylineColor() {
+    directionsDisplay.setMap(null);
+    directionsDisplay.setOptions({
+      polylineOptions: {
+        strokeColor: 'red',
+        strokeWeight: '8',
+        strokeOpacity: '.75',
+        zIndex: -5
+      }
+    });
+    directionsDisplay.setMap(map);
+  }
+  initialize();
 }
 
 function blueLine(google, map) {
 
-var directionsDisplay;
-var directionsService = new google.maps.DirectionsService();
-var map;
+  var directionsDisplay;
+  var directionsService = new google.maps.DirectionsService();
+  var map;
 
-function initialize() {
+  function initialize() {
 
-  var rendererOptions = {
-    map: map,
-    suppressMarkers: false,
-    polylineOptions: {
-      strokeColor: 'null'
-    }
-  };
+    var rendererOptions = {
+      map: map,
+      suppressMarkers: false,
+      polylineOptions: {
+        strokeColor: 'null'
+      }
+    };
 
-  directionsDisplay = new google.maps.DirectionsRenderer
-  (rendererOptions);
+    directionsDisplay = new google.maps.DirectionsRenderer
+      (rendererOptions);
 
-  directionsDisplay.setMap(map);
+    directionsDisplay.setMap(map);
 
-  var start = "Blue Line, O'Hare Station, 10000 W O'Hare Ave, Chicago, IL 60666";
-  var end = "Blue Line, Forest Park Station, 711 Des Plaines Ave, Forest Park, IL 60130";
-  var method = 'TRANSIT';
-  var request = {
-    origin: start,
-    destination: end,
-    travelMode: google.maps.DirectionsTravelMode[method]
-  };
-  
-  directionsService.route(request, function(response, status) {
-    if (status == google.maps.DirectionsStatus.OK) {
-      directionsDisplay.setDirections(response);
-    }
-  });
+    var start = "Blue Line, O'Hare Station, 10000 W O'Hare Ave, Chicago, IL 60666";
+    var end = "Blue Line, Forest Park Station, 711 Des Plaines Ave, Forest Park, IL 60130";
+    var method = 'TRANSIT';
+    var request = {
+      origin: start,
+      destination: end,
+      travelMode: google.maps.DirectionsTravelMode[method]
+    };
 
-  // Add an event listener to the button
-  var button = document.getElementById("blueButton");
-  button.addEventListener("click", changePolylineColor);
-}
+    directionsService.route(request, function (response, status) {
+      if (status == google.maps.DirectionsStatus.OK) {
+        directionsDisplay.setDirections(response);
+      }
+    });
 
-function changePolylineColor() {
-  directionsDisplay.setMap(null);
-  directionsDisplay.setOptions({
-    polylineOptions: {
-      strokeColor: 'blue',
-      strokeWeight: '8',
-      strokeOpacity: '.75',
-    }
-  });
-  directionsDisplay.setMap(map);
-}
+    // Add an event listener to the button
+    var button = document.getElementById("blueButton");
+    button.addEventListener("click", changePolylineColor);
+  }
 
-initialize();
+  function changePolylineColor() {
+    directionsDisplay.setMap(null);
+    directionsDisplay.setOptions({
+      polylineOptions: {
+        strokeColor: 'blue',
+        strokeWeight: '8',
+        strokeOpacity: '.75',
+      }
+    });
+    directionsDisplay.setMap(map);
+  }
+
+  initialize();
 }
 
 function brownLine(google, map) {
 
-var directionsDisplay;
-var directionsService = new google.maps.DirectionsService();
-var map;
+  var directionsDisplay;
+  var directionsService = new google.maps.DirectionsService();
+  var map;
 
-function initialize() {
+  function initialize() {
 
-  var rendererOptions = {
-    map: map,
-    suppressMarkers: false,
-    polylineOptions: {
-      strokeColor: 'null'
-    }
-  };
+    var rendererOptions = {
+      map: map,
+      suppressMarkers: false,
+      polylineOptions: {
+        strokeColor: 'null'
+      }
+    };
 
-  directionsDisplay = new google.maps.DirectionsRenderer
-  (rendererOptions);
+    directionsDisplay = new google.maps.DirectionsRenderer
+      (rendererOptions);
 
-  directionsDisplay.setMap(map);
+    directionsDisplay.setMap(map);
 
-  var start = "Brown Line, Kimball Station, 4755 N Kimball Ave, Chicago, IL 60625";
-  var end = "Brown Line, Loop Station, 100 W Lake St, Chicago, IL 60601";
-  var method = 'TRANSIT';
-  var request = {
-    origin: start,
-    destination: end,
-    travelMode: google.maps.DirectionsTravelMode[method]
-  };
-  
-  directionsService.route(request, function(response, status) {
-    if (status == google.maps.DirectionsStatus.OK) {
-      directionsDisplay.setDirections(response);
-    }
-  });
+    var start = "Brown Line, Kimball Station, 4755 N Kimball Ave, Chicago, IL 60625";
+    var end = "Brown Line, Loop Station, 100 W Lake St, Chicago, IL 60601";
+    var method = 'TRANSIT';
+    var request = {
+      origin: start,
+      destination: end,
+      travelMode: google.maps.DirectionsTravelMode[method]
+    };
 
-  // Add an event listener to the button
-  var button = document.getElementById("brownButton");
-  button.addEventListener("click", changePolylineColor);
-}
+    directionsService.route(request, function (response, status) {
+      if (status == google.maps.DirectionsStatus.OK) {
+        directionsDisplay.setDirections(response);
+      }
+    });
 
-function changePolylineColor() {
-  directionsDisplay.setMap(null);
-  directionsDisplay.setOptions({
-    polylineOptions: {
-      strokeColor: '#964B00',
-      strokeWeight: '8',
-      strokeOpacity: '.75',
-    }
-  });
-  directionsDisplay.setMap(map);
-}
+    // Add an event listener to the button
+    var button = document.getElementById("brownButton");
+    button.addEventListener("click", changePolylineColor);
+  }
 
-initialize();
+  function changePolylineColor() {
+    directionsDisplay.setMap(null);
+    directionsDisplay.setOptions({
+      polylineOptions: {
+        strokeColor: '#964B00',
+        strokeWeight: '8',
+        strokeOpacity: '.75',
+      }
+    });
+    directionsDisplay.setMap(map);
+  }
+
+  initialize();
 }
 
 function greenLine(google, map) {
 
-var directionsDisplay;
-var directionsService = new google.maps.DirectionsService();
-var map;
+  var directionsDisplay;
+  var directionsService = new google.maps.DirectionsService();
+  var map;
 
-function initialize() {
+  function initialize() {
 
-  var rendererOptions = {
-    map: map,
-    suppressMarkers: false,
-    polylineOptions: {
-      strokeColor: 'null'
-    }
-  };
+    var rendererOptions = {
+      map: map,
+      suppressMarkers: false,
+      polylineOptions: {
+        strokeColor: 'null'
+      }
+    };
 
-  directionsDisplay = new google.maps.DirectionsRenderer
-  (rendererOptions);
+    directionsDisplay = new google.maps.DirectionsRenderer
+      (rendererOptions);
 
-  directionsDisplay.setMap(map);
+    directionsDisplay.setMap(map);
 
-  var start = "Green Line, Harlem/Lake Station, 1 Harlem Ave, Forest Park, IL 60130";
-  var end = "Green Line, Ashland/63rd Station, 6315 S Ashland Ave, Chicago, IL 60636";
-  var method = 'TRANSIT';
-  var request = {
-    origin: start,
-    destination: end,
-    travelMode: google.maps.DirectionsTravelMode[method]
-  };
-  
-  directionsService.route(request, function(response, status) {
-    if (status == google.maps.DirectionsStatus.OK) {
-      directionsDisplay.setDirections(response);
-    }
-  });
+    var start = "Green Line, Harlem/Lake Station, 1 Harlem Ave, Forest Park, IL 60130";
+    var end = "Green Line, Ashland/63rd Station, 6315 S Ashland Ave, Chicago, IL 60636";
+    var method = 'TRANSIT';
+    var request = {
+      origin: start,
+      destination: end,
+      travelMode: google.maps.DirectionsTravelMode[method]
+    };
 
-  // Add an event listener to the button
-  var button = document.getElementById("greenButton");
-  button.addEventListener("click", changePolylineColor);
-}
+    directionsService.route(request, function (response, status) {
+      if (status == google.maps.DirectionsStatus.OK) {
+        directionsDisplay.setDirections(response);
+      }
+    });
 
-function changePolylineColor() {
-  directionsDisplay.setMap(null);
-  directionsDisplay.setOptions({
-    polylineOptions: {
-      strokeColor: 'green',
-      strokeWeight: '8',
-      strokeOpacity: '.75',
-    }
-  });
-  directionsDisplay.setMap(map);
-}
+    // Add an event listener to the button
+    var button = document.getElementById("greenButton");
+    button.addEventListener("click", changePolylineColor);
+  }
 
-initialize();
+  function changePolylineColor() {
+    directionsDisplay.setMap(null);
+    directionsDisplay.setOptions({
+      polylineOptions: {
+        strokeColor: 'green',
+        strokeWeight: '8',
+        strokeOpacity: '.75',
+      }
+    });
+    directionsDisplay.setMap(map);
+  }
+
+  initialize();
 }
 
 function orangeLine(google, map) {
 
-var directionsDisplay;
-var directionsService = new google.maps.DirectionsService();
-var map;
+  var directionsDisplay;
+  var directionsService = new google.maps.DirectionsService();
+  var map;
 
-function initialize() {
+  function initialize() {
 
-  var rendererOptions = {
-    map: map,
-    suppressMarkers: false,
-    polylineOptions: {
-      strokeColor: 'null'
-    }
-  };
+    var rendererOptions = {
+      map: map,
+      suppressMarkers: false,
+      polylineOptions: {
+        strokeColor: 'null'
+      }
+    };
 
-  directionsDisplay = new google.maps.DirectionsRenderer
-  (rendererOptions);
+    directionsDisplay = new google.maps.DirectionsRenderer
+      (rendererOptions);
 
-  directionsDisplay.setMap(map);
+    directionsDisplay.setMap(map);
 
-  var start = "Orange Line, Midway Station, 4612 W 59th St, Chicago, IL 60629";
-  var end = "Orange Line, washington/wabash Station, 29 N Wabash Ave, Chicago, IL 60602";
-  var method = 'TRANSIT';
-  var request = {
-    origin: start,
-    destination: end,
-    travelMode: google.maps.DirectionsTravelMode[method]
-  };
-  
-  directionsService.route(request, function(response, status) {
-    if (status == google.maps.DirectionsStatus.OK) {
-      directionsDisplay.setDirections(response);
-    }
-  });
+    var start = "Orange Line, Midway Station, 4612 W 59th St, Chicago, IL 60629";
+    var end = "Orange Line, washington/wabash Station, 29 N Wabash Ave, Chicago, IL 60602";
+    var method = 'TRANSIT';
+    var request = {
+      origin: start,
+      destination: end,
+      travelMode: google.maps.DirectionsTravelMode[method]
+    };
 
-  // Add an event listener to the button
-  var button = document.getElementById("orangeButton");
-  button.addEventListener("click", changePolylineColor);
-}
+    directionsService.route(request, function (response, status) {
+      if (status == google.maps.DirectionsStatus.OK) {
+        directionsDisplay.setDirections(response);
+      }
+    });
 
-function changePolylineColor() {
-  directionsDisplay.setMap(null);
-  directionsDisplay.setOptions({
-    polylineOptions: {
-      strokeColor: 'orange',
-      strokeWeight: '8',
-      strokeOpacity: '.75',
-    }
-  });
-  directionsDisplay.setMap(map);
-}
+    // Add an event listener to the button
+    var button = document.getElementById("orangeButton");
+    button.addEventListener("click", changePolylineColor);
+  }
 
-initialize();
+  function changePolylineColor() {
+    directionsDisplay.setMap(null);
+    directionsDisplay.setOptions({
+      polylineOptions: {
+        strokeColor: 'orange',
+        strokeWeight: '8',
+        strokeOpacity: '.75',
+      }
+    });
+    directionsDisplay.setMap(map);
+  }
+
+  initialize();
 }
 
 function pinkLine(google, map) {
 
-var directionsDisplay;
-var directionsService = new google.maps.DirectionsService();
-var map;
+  var directionsDisplay;
+  var directionsService = new google.maps.DirectionsService();
+  var map;
 
-function initialize() {
+  function initialize() {
 
-  var rendererOptions = {
-    map: map,
-    suppressMarkers: false,
-    polylineOptions: {
-      strokeColor: 'null'
-    }
-  };
+    var rendererOptions = {
+      map: map,
+      suppressMarkers: false,
+      polylineOptions: {
+        strokeColor: 'null'
+      }
+    };
 
-  directionsDisplay = new google.maps.DirectionsRenderer
-  (rendererOptions);
+    directionsDisplay = new google.maps.DirectionsRenderer
+      (rendererOptions);
 
-  directionsDisplay.setMap(map);
+    directionsDisplay.setMap(map);
 
-  var start = "Pink Line, 54th/Cermak Station, 2100 S Cermak Rd, Chicago, IL 60608";
-  var end = "Pink Line, Washington/Wells Station, 100 N Wells St, Chicago, IL 60606";
-  var method = 'TRANSIT';
-  var request = {
-    origin: start,
-    destination: end,
-    travelMode: google.maps.DirectionsTravelMode[method]
-  };
-  
-  directionsService.route(request, function(response, status) {
-    if (status == google.maps.DirectionsStatus.OK) {
-      directionsDisplay.setDirections(response);
-    }
-  });
+    var start = "Pink Line, 54th/Cermak Station, 2100 S Cermak Rd, Chicago, IL 60608";
+    var end = "Pink Line, Washington/Wells Station, 100 N Wells St, Chicago, IL 60606";
+    var method = 'TRANSIT';
+    var request = {
+      origin: start,
+      destination: end,
+      travelMode: google.maps.DirectionsTravelMode[method]
+    };
 
-  // Add an event listener to the button
-  var button = document.getElementById("pinkButton");
-  button.addEventListener("click", changePolylineColor);
-}
+    directionsService.route(request, function (response, status) {
+      if (status == google.maps.DirectionsStatus.OK) {
+        directionsDisplay.setDirections(response);
+      }
+    });
 
-function changePolylineColor() {
-  directionsDisplay.setMap(null);
-  directionsDisplay.setOptions({
-    polylineOptions: {
-      strokeColor: 'pink',
-      strokeWeight: '8',
-      strokeOpacity: '.80',
-    }
-  });
-  directionsDisplay.setMap(map);
-}
+    // Add an event listener to the button
+    var button = document.getElementById("pinkButton");
+    button.addEventListener("click", changePolylineColor);
+  }
 
-initialize();
+  function changePolylineColor() {
+    directionsDisplay.setMap(null);
+    directionsDisplay.setOptions({
+      polylineOptions: {
+        strokeColor: 'pink',
+        strokeWeight: '8',
+        strokeOpacity: '.80',
+      }
+    });
+    directionsDisplay.setMap(map);
+  }
+
+  initialize();
 }
 
 function purpleLine(google, map) {
 
-var directionsDisplay;
-var directionsService = new google.maps.DirectionsService();
-var map;
+  var directionsDisplay;
+  var directionsService = new google.maps.DirectionsService();
+  var map;
 
-function initialize() {
+  function initialize() {
 
-  var rendererOptions = {
-    map: map,
-    suppressMarkers: false,
-    polylineOptions: {
-      strokeColor: 'null'
-    }
-  };
+    var rendererOptions = {
+      map: map,
+      suppressMarkers: false,
+      polylineOptions: {
+        strokeColor: 'null'
+      }
+    };
 
-  directionsDisplay = new google.maps.DirectionsRenderer
-  (rendererOptions);
+    directionsDisplay = new google.maps.DirectionsRenderer
+      (rendererOptions);
 
-  directionsDisplay.setMap(map);
+    directionsDisplay.setMap(map);
 
-  var start = "Linden Station, 349 Linden Ave, Wilmette, IL 60091";
-  var end = "Howard Station, 1649 W Howard St, Chicago, IL 60626";
-  var method = 'TRANSIT';
-  var request = {
-    origin: start,
-    destination: end,
-    travelMode: google.maps.DirectionsTravelMode[method]
-  };
-  
-  directionsService.route(request, function(response, status) {
-    if (status == google.maps.DirectionsStatus.OK) {
-      directionsDisplay.setDirections(response);
-    }
-  });
+    var start = "Linden Station, 349 Linden Ave, Wilmette, IL 60091";
+    var end = "Howard Station, 1649 W Howard St, Chicago, IL 60626";
+    var method = 'TRANSIT';
+    var request = {
+      origin: start,
+      destination: end,
+      travelMode: google.maps.DirectionsTravelMode[method]
+    };
 
-  // Add an event listener to the button
-  var button = document.getElementById("purpleButton");
-  button.addEventListener("click", changePolylineColor);
-}
+    directionsService.route(request, function (response, status) {
+      if (status == google.maps.DirectionsStatus.OK) {
+        directionsDisplay.setDirections(response);
+      }
+    });
 
-function changePolylineColor() {
-  directionsDisplay.setMap(null);
-  directionsDisplay.setOptions({
-    polylineOptions: {
-      strokeColor: 'purple',
-      strokeWeight: '8',
-      strokeOpacity: '.75',
-    }
-  });
-  directionsDisplay.setMap(map);
-}
+    // Add an event listener to the button
+    var button = document.getElementById("purpleButton");
+    button.addEventListener("click", changePolylineColor);
+  }
 
-initialize();
+  function changePolylineColor() {
+    directionsDisplay.setMap(null);
+    directionsDisplay.setOptions({
+      polylineOptions: {
+        strokeColor: 'purple',
+        strokeWeight: '8',
+        strokeOpacity: '.75',
+      }
+    });
+    directionsDisplay.setMap(map);
+  }
+
+  initialize();
 }
 
 function yellowLine(google, map) {
 
-var directionsDisplay;
-var directionsService = new google.maps.DirectionsService();
-var map;
+  var directionsDisplay;
+  var directionsService = new google.maps.DirectionsService();
+  var map;
 
-function initialize() {
+  function initialize() {
 
-  var rendererOptions = {
-    map: map,
-    suppressMarkers: false,
-    polylineOptions: {
-      strokeColor: 'null'
-    }
-  };
+    var rendererOptions = {
+      map: map,
+      suppressMarkers: false,
+      polylineOptions: {
+        strokeColor: 'null'
+      }
+    };
 
-  directionsDisplay = new google.maps.DirectionsRenderer
-  (rendererOptions);
+    directionsDisplay = new google.maps.DirectionsRenderer
+      (rendererOptions);
 
-  directionsDisplay.setMap(map);
+    directionsDisplay.setMap(map);
 
-  var start = "Yellow Line, Dempster Station, 5001 W Dempster St, Skokie, IL 60077";
-  var end = "Yellow Line, Howard Station, 1649 W Howard St, Chicago, IL 60626";
-  var method = 'TRANSIT';
-  var request = {
-    origin: start,
-    destination: end,
-    travelMode: google.maps.DirectionsTravelMode[method]
-  };
-  
-  directionsService.route(request, function(response, status) {
-    if (status == google.maps.DirectionsStatus.OK) {
-      directionsDisplay.setDirections(response);
-    }
-  });
+    var start = "Yellow Line, Dempster Station, 5001 W Dempster St, Skokie, IL 60077";
+    var end = "Yellow Line, Howard Station, 1649 W Howard St, Chicago, IL 60626";
+    var method = 'TRANSIT';
+    var request = {
+      origin: start,
+      destination: end,
+      travelMode: google.maps.DirectionsTravelMode[method]
+    };
 
-  // Add an event listener to the button
-  var button = document.getElementById("yellowButton");
-  button.addEventListener("click", changePolylineColor);
-}
+    directionsService.route(request, function (response, status) {
+      if (status == google.maps.DirectionsStatus.OK) {
+        directionsDisplay.setDirections(response);
+      }
+    });
 
-function changePolylineColor() {
-  directionsDisplay.setMap(null);
-  directionsDisplay.setOptions({
-    polylineOptions: {
-      strokeColor: 'yellow',
-      strokeWeight: '8',
-      strokeOpacity: '.75',
-    }
-  });
-  directionsDisplay.setMap(map);
-}
+    // Add an event listener to the button
+    var button = document.getElementById("yellowButton");
+    button.addEventListener("click", changePolylineColor);
+  }
 
-initialize();
+  function changePolylineColor() {
+    directionsDisplay.setMap(null);
+    directionsDisplay.setOptions({
+      polylineOptions: {
+        strokeColor: 'yellow',
+        strokeWeight: '8',
+        strokeOpacity: '.75',
+      }
+    });
+    directionsDisplay.setMap(map);
+  }
+
+  initialize();
 }
 
 
