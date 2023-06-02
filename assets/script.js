@@ -190,7 +190,7 @@ function initialize() {
     map: map,
     suppressMarkers: false,
     polylineOptions: {
-      strokeColor: 'red'
+      strokeColor: 'null'
     }
   };
 
@@ -249,7 +249,7 @@ function initialize() {
     map: map,
     suppressMarkers: false,
     polylineOptions: {
-      strokeColor: 'blue'
+      strokeColor: 'null'
     }
   };
 
@@ -308,7 +308,7 @@ function initialize() {
     map: map,
     suppressMarkers: false,
     polylineOptions: {
-      strokeColor: '#964B00'
+      strokeColor: 'null'
     }
   };
 
@@ -367,7 +367,7 @@ function initialize() {
     map: map,
     suppressMarkers: false,
     polylineOptions: {
-      strokeColor: 'green'
+      strokeColor: 'null'
     }
   };
 
@@ -426,7 +426,7 @@ function initialize() {
     map: map,
     suppressMarkers: false,
     polylineOptions: {
-      strokeColor: 'orange'
+      strokeColor: 'null'
     }
   };
 
@@ -485,7 +485,7 @@ function initialize() {
     map: map,
     suppressMarkers: false,
     polylineOptions: {
-      strokeColor: 'pink'
+      strokeColor: 'null'
     }
   };
 
@@ -544,7 +544,7 @@ function initialize() {
     map: map,
     suppressMarkers: false,
     polylineOptions: {
-      strokeColor: 'purple'
+      strokeColor: 'null'
     }
   };
 
@@ -603,7 +603,7 @@ function initialize() {
     map: map,
     suppressMarkers: false,
     polylineOptions: {
-      strokeColor: 'yellow'
+      strokeColor: 'null'
     }
   };
 
