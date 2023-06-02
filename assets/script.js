@@ -296,7 +296,7 @@ function initialize() {
   directionsDisplay.setMap(map);
 
   var start = "Blue Line, O'Hare Station, 10000 W O'Hare Ave, Chicago, IL 60666";
-  var end = "Blue Line, UiC-Halsted Station, 430 S Halsted St, Chicago, IL 60607";
+  var end = "Blue Line, Forest Park Station, 711 Des Plaines Ave, Forest Park, IL 60130";
   var method = 'TRANSIT';
   var request = {
     origin: start,
