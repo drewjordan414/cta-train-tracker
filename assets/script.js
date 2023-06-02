@@ -219,7 +219,6 @@ function initMap() {
 window.initMap = initMap;
 
 function redLine(google, map) {
-  console.log(google);
 
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
@@ -237,7 +236,6 @@ function initialize() {
 
   directionsDisplay = new google.maps.DirectionsRenderer
   (rendererOptions);
-  console.log(directionsDisplay);
 
   directionsDisplay.setMap(map);
 
@@ -262,7 +260,6 @@ function initialize() {
 }
 
 function changePolylineColor() {
-  console.log(directionsDisplay);
   directionsDisplay.setMap(null);
   directionsDisplay.setOptions({
     polylineOptions: {
@@ -278,7 +275,6 @@ initialize();
 }
 
 function blueLine(google, map) {
-  console.log(google);
 
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
@@ -296,7 +292,6 @@ function initialize() {
 
   directionsDisplay = new google.maps.DirectionsRenderer
   (rendererOptions);
-  console.log(directionsDisplay);
 
   directionsDisplay.setMap(map);
 
@@ -321,7 +316,6 @@ function initialize() {
 }
 
 function changePolylineColor() {
-  console.log(directionsDisplay);
   directionsDisplay.setMap(null);
   directionsDisplay.setOptions({
     polylineOptions: {
@@ -337,7 +331,6 @@ initialize();
 }
 
 function brownLine(google, map) {
-  console.log(google);
 
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
@@ -355,7 +348,6 @@ function initialize() {
 
   directionsDisplay = new google.maps.DirectionsRenderer
   (rendererOptions);
-  console.log(directionsDisplay);
 
   directionsDisplay.setMap(map);
 
@@ -380,7 +372,6 @@ function initialize() {
 }
 
 function changePolylineColor() {
-  console.log(directionsDisplay);
   directionsDisplay.setMap(null);
   directionsDisplay.setOptions({
     polylineOptions: {
@@ -396,7 +387,6 @@ initialize();
 }
 
 function greenLine(google, map) {
-  console.log(google);
 
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
@@ -414,7 +404,6 @@ function initialize() {
 
   directionsDisplay = new google.maps.DirectionsRenderer
   (rendererOptions);
-  console.log(directionsDisplay);
 
   directionsDisplay.setMap(map);
 
@@ -439,7 +428,6 @@ function initialize() {
 }
 
 function changePolylineColor() {
-  console.log(directionsDisplay);
   directionsDisplay.setMap(null);
   directionsDisplay.setOptions({
     polylineOptions: {
@@ -455,7 +443,6 @@ initialize();
 }
 
 function orangeLine(google, map) {
-  console.log(google);
 
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
@@ -473,7 +460,6 @@ function initialize() {
 
   directionsDisplay = new google.maps.DirectionsRenderer
   (rendererOptions);
-  console.log(directionsDisplay);
 
   directionsDisplay.setMap(map);
 
@@ -498,7 +484,6 @@ function initialize() {
 }
 
 function changePolylineColor() {
-  console.log(directionsDisplay);
   directionsDisplay.setMap(null);
   directionsDisplay.setOptions({
     polylineOptions: {
@@ -514,7 +499,6 @@ initialize();
 }
 
 function pinkLine(google, map) {
-  console.log(google);
 
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
@@ -532,7 +516,6 @@ function initialize() {
 
   directionsDisplay = new google.maps.DirectionsRenderer
   (rendererOptions);
-  console.log(directionsDisplay);
 
   directionsDisplay.setMap(map);
 
@@ -557,7 +540,6 @@ function initialize() {
 }
 
 function changePolylineColor() {
-  console.log(directionsDisplay);
   directionsDisplay.setMap(null);
   directionsDisplay.setOptions({
     polylineOptions: {
@@ -573,7 +555,6 @@ initialize();
 }
 
 function purpleLine(google, map) {
-  console.log(google);
 
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
@@ -591,7 +572,6 @@ function initialize() {
 
   directionsDisplay = new google.maps.DirectionsRenderer
   (rendererOptions);
-  console.log(directionsDisplay);
 
   directionsDisplay.setMap(map);
 
@@ -616,7 +596,6 @@ function initialize() {
 }
 
 function changePolylineColor() {
-  console.log(directionsDisplay);
   directionsDisplay.setMap(null);
   directionsDisplay.setOptions({
     polylineOptions: {
@@ -632,7 +611,6 @@ initialize();
 }
 
 function yellowLine(google, map) {
-  console.log(google);
 
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
@@ -650,7 +628,6 @@ function initialize() {
 
   directionsDisplay = new google.maps.DirectionsRenderer
   (rendererOptions);
-  console.log(directionsDisplay);
 
   directionsDisplay.setMap(map);
 
@@ -675,7 +652,6 @@ function initialize() {
 }
 
 function changePolylineColor() {
-  console.log(directionsDisplay);
   directionsDisplay.setMap(null);
   directionsDisplay.setOptions({
     polylineOptions: {
