@@ -140,18 +140,18 @@ function getTrainArrivalTime(destination, stopDescription) {
 }
 
 // Initialize the map and fetch train data
-// function initMap() {
-//   const map = new google.maps.Map(document.getElementById("map"), {
-//       zoom: 13,
-//       center: { lat: 41.8781, lng: -87.6298 }, // Center the map to Chicago
-//   });
+function initMap() {
+  const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 13,
+      center: { lat: 41.8781, lng: -87.6298 }, // Center the map to Chicago
+  });
 
-//   const transitLayer = new google.maps.TransitLayer();
-//   transitLayer.setMap(map);
+  const transitLayer = new google.maps.TransitLayer();
+  transitLayer.setMap(map);
 
-//   fetchTrainData(map);
-//   setInterval(() => fetchTrainData(map), 15000);
-// }
+  fetchTrainData(map);
+  setInterval(() => fetchTrainData(map), 15000);
+}
 
 // window.initMap = initMap;
 
