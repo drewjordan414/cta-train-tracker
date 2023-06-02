@@ -37,6 +37,21 @@ const trainDirection = {
     },
 }
 
+// const directionAngle = {
+//   "Howard-Bound": 0,
+//   "95th/Dan Ryan-Bound": 180,
+//   "O'Hare-Bound": 45,
+//   "Forest Park-Bound": 225,
+//   "Kimball-Bound": 90,
+//   "Loop-Bound": 135,
+//   "Harlem/Lake-Bound": 135,
+//   "Cottage Grove-Bound": 180,
+//   "Midway-Bound": 225,
+//   "Linden-Bound": 270,
+//   "54th/Cermak-Bound": 315,
+//   "Skokie-Bound": 0,
+// };
+
 const trainColors = {
   red: "#C60C30",
   blue: "#00A1DE",
@@ -68,6 +83,7 @@ searchInput.addEventListener('input', function() {
 
 
 // Fetch train data from CTA API and update map
+
 function fetchTrainData(map) {
   const trainDataUrl = `https://lapi.transitchicago.com/api/1.0/ttpositions.aspx?key=${ctaKey}&rt=red,blue,brn,g,org,p,pink,y&outputType=JSON`;
   const proxyUrl = "https://cors-anywhere.herokuapp.com/";
@@ -81,18 +97,21 @@ function fetchTrainData(map) {
       // Parse train data and create new markers
       data.ctatt.route.forEach((route) => {
         route.train.forEach((train) => {
+          const arrowIcon = {
+            url: '/Users/drewjordan/Documents/bootcamp/homework/cta-train-tracker/assets/images/arrow-38632.svg', // Path to your SVG
+            scaledSize: new google.maps.Size(20, 20), // Size of your icon
+            rotation: parseFloat(train.heading) + 90, // Assuming 'heading' value is in degrees, and the arrow in the SVG points to the right
+            fillColor: trainColors[route.rt], // Set the marker color based on the train line
+            fillOpacity: 4,
+            strokeWeight: 2,
+          };
+
           const marker = new google.maps.Marker({
             position: {
               lat: parseFloat(train.lat),
               lng: parseFloat(train.lon),
             },
-            icon: {
-              path: google.maps.SymbolPath.CIRCLE,
-              fillColor: trainColors[route.rt], // Set the marker color based on the train line
-              fillOpacity: 1,
-              strokeWeight: 0,
-              scale: 6,
-            },
+            icon: arrowIcon, // Use the custom arrow icon
             map: map,
           });
 
@@ -105,6 +124,7 @@ function fetchTrainData(map) {
       console.error("Error fetching train data:", error);
     });
 }
+
 
 
 // Clear train markers from the map
@@ -129,8 +149,8 @@ function getTrainArrivalTime(destination, stopDescription) {
     const route = trainDirection[0];
     const direction = trainDirection[1][stopDescription];
     if (route && direction) {
-      // Replace this with your logic to get the actual arrival time
-      // This is just a placeholder
+      // Replace this with logic to get the actual arrival time
+      // placeholder
       const arrivalTime = "12:30 PM";
       return arrivalTime;
     }
