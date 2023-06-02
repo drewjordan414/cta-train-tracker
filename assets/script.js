@@ -84,6 +84,46 @@ searchInput.addEventListener('input', function() {
 
 // Fetch train data from CTA API and update map
 
+// function fetchTrainData(map) {
+//   const trainDataUrl = `https://lapi.transitchicago.com/api/1.0/ttpositions.aspx?key=${ctaKey}&rt=red,blue,brn,g,org,p,pink,y&outputType=JSON`;
+//   const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+
+//   fetch(proxyUrl + trainDataUrl)
+//     .then((response) => response.json())
+//     .then((data) => {
+//       // Clear existing train markers from the map
+//       clearTrainMarkers();
+
+//       // Parse train data and create new markers
+//       data.ctatt.route.forEach((route) => {
+//         route.train.forEach((train) => {
+//           const arrowIcon = {
+//             url: '/Users/drewjordan/Documents/bootcamp/homework/cta-train-tracker/assets/images/arrow-38632.svg', // Path to your SVG
+//             scaledSize: new google.maps.Size(20, 20), // Size of your icon
+//             rotation: parseFloat(train.heading) + 90, // Assuming 'heading' value is in degrees, and the arrow in the SVG points to the right
+//             fillColor: trainColors[route.rt], // Set the marker color based on the train line
+//             fillOpacity: 4,
+//             strokeWeight: 2,
+//           };
+
+//           const marker = new google.maps.Marker({
+//             position: {
+//               lat: parseFloat(train.lat),
+//               lng: parseFloat(train.lon),
+//             },
+//             icon: arrowIcon, // Use the custom arrow icon
+//             map: map,
+//           });
+
+//           // Add marker to the array
+//           trainMarkers.push(marker);
+//         });
+//       });
+//     })
+//     .catch((error) => {
+//       console.error("Error fetching train data:", error);
+//     });
+// }
 function fetchTrainData(map) {
   const trainDataUrl = `https://lapi.transitchicago.com/api/1.0/ttpositions.aspx?key=${ctaKey}&rt=red,blue,brn,g,org,p,pink,y&outputType=JSON`;
   const proxyUrl = "https://cors-anywhere.herokuapp.com/";
@@ -98,11 +138,11 @@ function fetchTrainData(map) {
       data.ctatt.route.forEach((route) => {
         route.train.forEach((train) => {
           const arrowIcon = {
-            url: '/Users/drewjordan/Documents/bootcamp/homework/cta-train-tracker/assets/images/arrow-38632.svg', // Path to your SVG
-            scaledSize: new google.maps.Size(20, 20), // Size of your icon
+            url: '/Users/drewjordan/Documents/bootcamp/homework/cta-train-tracker/assets/images/direction-arrows/north.svg', // Path to your arrow icon
+            scaledSize: new google.maps.Size(30, 30), // Size of your icon
             rotation: parseFloat(train.heading) + 90, // Assuming 'heading' value is in degrees, and the arrow in the SVG points to the right
             fillColor: trainColors[route.rt], // Set the marker color based on the train line
-            fillOpacity: 4,
+            fillOpacity: 0.4,
             strokeWeight: 2,
           };
 
@@ -120,7 +160,6 @@ function fetchTrainData(map) {
         });
       });
     })
-    
     .catch((error) => {
       console.error("Error fetching train data:", error);
     });
@@ -166,7 +205,6 @@ function initMap() {
       zoom: 13,
       center: { lat: 41.8781, lng: -87.6298 }, // Center the map to Chicago
   });
-
   redLine(google, map);
   blueLine(google, map);
   brownLine(google, map);
@@ -175,21 +213,13 @@ function initMap() {
   pinkLine(google, map);
   purpleLine(google, map);
   yellowLine(google, map);
-
-  const transitLayer = new google.maps.TransitLayer();
-  transitLayer.setMap(map);
-
   fetchTrainData(map);
-  setInterval(() => fetchTrainData(map), 15000);
 }
-
-
-
-
 
 window.initMap = initMap;
 
 function redLine(google, map) {
+  console.log(google);
 
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
@@ -207,6 +237,7 @@ function initialize() {
 
   directionsDisplay = new google.maps.DirectionsRenderer
   (rendererOptions);
+  console.log(directionsDisplay);
 
   directionsDisplay.setMap(map);
 
@@ -231,6 +262,7 @@ function initialize() {
 }
 
 function changePolylineColor() {
+  console.log(directionsDisplay);
   directionsDisplay.setMap(null);
   directionsDisplay.setOptions({
     polylineOptions: {
@@ -246,6 +278,7 @@ initialize();
 }
 
 function blueLine(google, map) {
+  console.log(google);
 
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
@@ -263,6 +296,7 @@ function initialize() {
 
   directionsDisplay = new google.maps.DirectionsRenderer
   (rendererOptions);
+  console.log(directionsDisplay);
 
   directionsDisplay.setMap(map);
 
@@ -287,6 +321,7 @@ function initialize() {
 }
 
 function changePolylineColor() {
+  console.log(directionsDisplay);
   directionsDisplay.setMap(null);
   directionsDisplay.setOptions({
     polylineOptions: {
@@ -302,6 +337,7 @@ initialize();
 }
 
 function brownLine(google, map) {
+  console.log(google);
 
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
@@ -319,6 +355,7 @@ function initialize() {
 
   directionsDisplay = new google.maps.DirectionsRenderer
   (rendererOptions);
+  console.log(directionsDisplay);
 
   directionsDisplay.setMap(map);
 
@@ -343,6 +380,7 @@ function initialize() {
 }
 
 function changePolylineColor() {
+  console.log(directionsDisplay);
   directionsDisplay.setMap(null);
   directionsDisplay.setOptions({
     polylineOptions: {
@@ -358,6 +396,7 @@ initialize();
 }
 
 function greenLine(google, map) {
+  console.log(google);
 
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
@@ -375,6 +414,7 @@ function initialize() {
 
   directionsDisplay = new google.maps.DirectionsRenderer
   (rendererOptions);
+  console.log(directionsDisplay);
 
   directionsDisplay.setMap(map);
 
@@ -399,6 +439,7 @@ function initialize() {
 }
 
 function changePolylineColor() {
+  console.log(directionsDisplay);
   directionsDisplay.setMap(null);
   directionsDisplay.setOptions({
     polylineOptions: {
@@ -414,6 +455,7 @@ initialize();
 }
 
 function orangeLine(google, map) {
+  console.log(google);
 
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
@@ -431,6 +473,7 @@ function initialize() {
 
   directionsDisplay = new google.maps.DirectionsRenderer
   (rendererOptions);
+  console.log(directionsDisplay);
 
   directionsDisplay.setMap(map);
 
@@ -455,6 +498,7 @@ function initialize() {
 }
 
 function changePolylineColor() {
+  console.log(directionsDisplay);
   directionsDisplay.setMap(null);
   directionsDisplay.setOptions({
     polylineOptions: {
@@ -470,6 +514,7 @@ initialize();
 }
 
 function pinkLine(google, map) {
+  console.log(google);
 
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
@@ -487,6 +532,7 @@ function initialize() {
 
   directionsDisplay = new google.maps.DirectionsRenderer
   (rendererOptions);
+  console.log(directionsDisplay);
 
   directionsDisplay.setMap(map);
 
@@ -511,6 +557,7 @@ function initialize() {
 }
 
 function changePolylineColor() {
+  console.log(directionsDisplay);
   directionsDisplay.setMap(null);
   directionsDisplay.setOptions({
     polylineOptions: {
@@ -526,6 +573,7 @@ initialize();
 }
 
 function purpleLine(google, map) {
+  console.log(google);
 
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
@@ -543,6 +591,7 @@ function initialize() {
 
   directionsDisplay = new google.maps.DirectionsRenderer
   (rendererOptions);
+  console.log(directionsDisplay);
 
   directionsDisplay.setMap(map);
 
@@ -567,6 +616,7 @@ function initialize() {
 }
 
 function changePolylineColor() {
+  console.log(directionsDisplay);
   directionsDisplay.setMap(null);
   directionsDisplay.setOptions({
     polylineOptions: {
@@ -582,6 +632,7 @@ initialize();
 }
 
 function yellowLine(google, map) {
+  console.log(google);
 
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
@@ -599,6 +650,7 @@ function initialize() {
 
   directionsDisplay = new google.maps.DirectionsRenderer
   (rendererOptions);
+  console.log(directionsDisplay);
 
   directionsDisplay.setMap(map);
 
@@ -623,6 +675,7 @@ function initialize() {
 }
 
 function changePolylineColor() {
+  console.log(directionsDisplay);
   directionsDisplay.setMap(null);
   directionsDisplay.setOptions({
     polylineOptions: {
