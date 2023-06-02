@@ -2,6 +2,32 @@
 const ctaKey = "5e45022e107345de8ab3edb8a97f9b94";
 const googleMapKey =  "AIzaSyD3RG2QsU0mu1zklWXto3wL2QUaIF6WHbM";
 // const mapBox = "pk.eyJ1IjoiZHJld2pvcmRhbjQwNCIsImEiOiJjbGlhbnF6bjQwMG1jM2ZuMjRpcHBoeHRyIn0.s6T-06OAwld32_Y9wTKsog";
+// Add event listeners to line buttons
+document.getElementById("redButton").addEventListener("click", function() {
+  fetchTrainData(map, "red");
+});
+document.getElementById("blueButton").addEventListener("click", function() {
+  fetchTrainData(map, "blue");
+});
+document.getElementById("brownButton").addEventListener("click", function() {
+  fetchTrainData(map, "brn");
+});
+document.getElementById("greenButton").addEventListener("click", function() {
+  fetchTrainData(map, "g");
+});
+document.getElementById("orangeButton").addEventListener("click", function() {
+  fetchTrainData(map, "org");
+});
+document.getElementById("pinkButton").addEventListener("click", function() {
+  fetchTrainData(map, "pink");
+});
+document.getElementById("purpleButton").addEventListener("click", function() {
+  fetchTrainData(map, "p");
+});
+document.getElementById("yellowButton").addEventListener("click", function() {
+  fetchTrainData(map, "y");
+});
+
 const trainDirection = {
     "red":{
         1: "Howard-Bound",
@@ -83,47 +109,6 @@ searchInput.addEventListener('input', function() {
 
 
 // Fetch train data from CTA API and update map
-
-// function fetchTrainData(map) {
-//   const trainDataUrl = `https://lapi.transitchicago.com/api/1.0/ttpositions.aspx?key=${ctaKey}&rt=red,blue,brn,g,org,p,pink,y&outputType=JSON`;
-//   const proxyUrl = "https://cors-anywhere.herokuapp.com/";
-
-//   fetch(proxyUrl + trainDataUrl)
-//     .then((response) => response.json())
-//     .then((data) => {
-//       // Clear existing train markers from the map
-//       clearTrainMarkers();
-
-//       // Parse train data and create new markers
-//       data.ctatt.route.forEach((route) => {
-//         route.train.forEach((train) => {
-//           const arrowIcon = {
-//             url: '/Users/drewjordan/Documents/bootcamp/homework/cta-train-tracker/assets/images/arrow-38632.svg', // Path to your SVG
-//             scaledSize: new google.maps.Size(20, 20), // Size of your icon
-//             rotation: parseFloat(train.heading) + 90, // Assuming 'heading' value is in degrees, and the arrow in the SVG points to the right
-//             fillColor: trainColors[route.rt], // Set the marker color based on the train line
-//             fillOpacity: 4,
-//             strokeWeight: 2,
-//           };
-
-//           const marker = new google.maps.Marker({
-//             position: {
-//               lat: parseFloat(train.lat),
-//               lng: parseFloat(train.lon),
-//             },
-//             icon: arrowIcon, // Use the custom arrow icon
-//             map: map,
-//           });
-
-//           // Add marker to the array
-//           trainMarkers.push(marker);
-//         });
-//       });
-//     })
-//     .catch((error) => {
-//       console.error("Error fetching train data:", error);
-//     });
-// }
 function fetchTrainData(map) {
   const trainDataUrl = `https://lapi.transitchicago.com/api/1.0/ttpositions.aspx?key=${ctaKey}&rt=red,blue,brn,g,org,p,pink,y&outputType=JSON`;
   const proxyUrl = "https://cors-anywhere.herokuapp.com/";
@@ -138,7 +123,7 @@ function fetchTrainData(map) {
       data.ctatt.route.forEach((route) => {
         route.train.forEach((train) => {
           const arrowIcon = {
-            url: '/Users/drewjordan/Documents/bootcamp/homework/cta-train-tracker/assets/images/direction-arrows/north.svg', // Path to your arrow icon
+            url: 'assets/images/train.svg', // Path to your arrow icon
             scaledSize: new google.maps.Size(30, 30), // Size of your icon
             rotation: parseFloat(train.heading) + 90, // Assuming 'heading' value is in degrees, and the arrow in the SVG points to the right
             fillColor: trainColors[route.rt], // Set the marker color based on the train line
@@ -167,11 +152,15 @@ function fetchTrainData(map) {
 
 
 
+
+
+// Clear train markers from the map
 // Clear train markers from the map
 function clearTrainMarkers() {
-  // Loop through the train markers array and set the map property to null
+  // Loop through the train markers array
   trainMarkers.forEach((marker) => {
-    marker.setMap(null);
+    // Hide the marker by setting its visibility to false
+    marker.setVisible(false);
   });
 
   // Clear the train markers array
