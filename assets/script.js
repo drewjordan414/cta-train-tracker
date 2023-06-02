@@ -150,11 +150,6 @@ function fetchTrainData(map) {
     });
 }
 
-
-
-
-
-// Clear train markers from the map
 // Clear train markers from the map
 function clearTrainMarkers() {
   // Loop through the train markers array
@@ -188,11 +183,15 @@ function getTrainArrivalTime(destination, stopDescription) {
   return "N/A";
 }
 
+function refreshTrains(map) {
+  fetchTrainData(map);
+};
+
 // Initialize the map and fetch train data
 function initMap() {
   const map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 13,
-      center: { lat: 41.8781, lng: -87.6298 }, // Center the map to Chicago
+    zoom: 13,
+    center: { lat: 41.8781, lng: -87.6298 }, // Center the map to Chicago
   });
   redLine(google, map);
   blueLine(google, map);
@@ -203,6 +202,11 @@ function initMap() {
   purpleLine(google, map);
   yellowLine(google, map);
   fetchTrainData(map);
+
+  // Refresh trains every 10 seconds
+  setInterval(() => {
+    refreshTrains(map);
+  }, 10000);
 }
 
 window.initMap = initMap;
