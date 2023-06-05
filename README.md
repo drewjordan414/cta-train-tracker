@@ -3,6 +3,9 @@
 ## Description
 -  CTA Train Tracker is equipped with a multitude of functions, including real-time train tracking, delay alerts, and data analysis features, which offer insights into the transit patterns, peak hours, and more. These tools offer users the opportunity to plan their commutes more effectively, avoid delays, and better understand the transit system's patterns. The application leverages the CTA Train Tracker API, which provides access to real-time train arrival estimates and location data. This enables the program to offer up-to-date and accurate train tracking capabilities. Open for improvements and new feature additions, this project welcomes contributions from other developers, promoting open-source collaboration and the continual enhancement of the tool.
 
+## Heroku Test Server
+* https://cors-anywhere.herokuapp.com/corsdemo
+
 ## Comign Soon
 1. Search bar to search for a specific train line
 2. Ability to click on a train stop and see the next train times
