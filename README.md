@@ -16,7 +16,7 @@
 https://drewjordan414.github.io/cta-train-tracker/
 
 ## Images
-<!-- ![image]("assets/images/cta-train-tracker.png") -->
+![livelink](https://github.com/drewjordan414/cta-train-tracker/assets/132436242/3a40b76f-409b-43d6-8597-aea8e71875be)
 
 ## Technologies Used
 - Collection of HTML, CSS, and JavaScript
